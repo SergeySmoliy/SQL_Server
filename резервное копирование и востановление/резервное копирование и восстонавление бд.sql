@@ -1,0 +1,22 @@
+--ALTER DATABASE PublishingHouse
+--SET recovery  BULK_LOGGED       ---1
+---------------------------------------------------
+--select name, recovery_model_desc ---2
+--from sys.databases;
+---------------------------------------------------
+--select * from sys.backup_devices  -----3
+-------------------------------------------------
+--exec sp_addumpdevice 'disk', 'mylogicaldisk', 'D:\Logic_Recovery\PublishingHouseBackUp.bak'; 
+--backup database [PublishingHouse] to PublishingHouseBackUp;
+--------------------------------------------------------------------------------------------4/5
+--update Sales set Sales.Price=(Sales.Price*1.15)
+--from Books,country,Shops
+--where  Books.ID_BOOK=Sales.ID_BOOK and  Sales.ID_SHOP=Sales.ID_SHOP and country.id_country=Shops.ID_COUNTRY and country.name='Ukraine'
+----------------------------------------------------------------------------------------------------------------------------------------6
+--select * from Sales
+--backup database [PublishingHouse] to mylogicaldisk -- disk='D:\Logic_Recovery\PublishingHouseBackUp.bak'
+---------------------------------------------------------------------------------------------------------------------------------------7
+--restore database  [PublishingHouse] from mylogicaldisk with replace
+---------------------------------------------------------------------------------------------------------------------------------------8
+--restore verifyonly from PublishingHouseBackUp
+---------------------------------------------------------------------------------------------------------------------------------------9
